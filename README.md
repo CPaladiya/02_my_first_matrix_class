@@ -1,17 +1,17 @@
 # 02_my_first_matrix_class
 Python script for `Matrix class` defined to be used for kalman filter implementation.
 
-# Implemented Matrix class : Functionality
+## Functionality
 
-## Implemented functions
+### Implemented functions
  - zeroes _[returns matrix with all zeros]_
  - identity _[returns identity matrix with size of n]_
-## Available instance attributes
+### Available instance attributes
  - determinant _[upto 2x2]_
  - trace _[nxn]_
  - inverse _[upto 2x2]_
  - transpose _[any size]_
- - ## Operator overloading
+ - ### Operator overloading
   - addition _[A+B]_
   - substraction _[A-B]_
   - matrix multiplication _[A(mxn)*B(nxp)]_
