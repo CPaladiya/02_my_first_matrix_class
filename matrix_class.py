@@ -26,7 +26,6 @@ class Matrix(object):
         self.h = len(grid)
         self.w = len(grid[0])
 
-    #
     # Primary matrix math methods
     #############################
  
@@ -38,8 +37,6 @@ class Matrix(object):
             raise(ValueError, "Cannot calculate determinant of non-square matrix.")
         if self.h > 2:
             raise(NotImplementedError, "Calculating determinant not implemented for matrices largerer than 2x2.")
-        
-        # TODO - your code here
         if self.h == 1:
             return self.g[0][0]
         elif self.h == 2:
@@ -55,8 +52,6 @@ class Matrix(object):
         """
         if not self.is_square():
             raise(ValueError, "Cannot calculate the trace of a non-square matrix.")
-
-        # TODO - your code here
         trace = 0
         for i in range(self.h):
             trace += self.g[i][i]
@@ -70,23 +65,17 @@ class Matrix(object):
             raise(ValueError, "Non-square Matrix does not have an inverse.")
         if self.h > 2:
             raise(NotImplementedError, "inversion not implemented for matrices larger than 2x2.")
-
-        # TODO - your code here
         if self.h == 1:
             inverse = [[1/self.g[0][0]]]
             return Matrix(inverse)
         elif self.determinant()!=0 and self.h == 2:
             inverse = (1/self.determinant())*((self.trace()*identity(self.h))+(-self))
             return inverse
-        
-            
-            
 
     def T(self):
         """
         Returns a transposed copy of this Matrix.
         """
-        # TODO - your code here
         transpose = []
         for i in range(self.w):
             row = []
@@ -98,7 +87,6 @@ class Matrix(object):
     def is_square(self):
         return self.h == self.w
 
-    #
     # Begin Operator Overloading
     ############################
     def __getitem__(self,idx):
@@ -133,8 +121,7 @@ class Matrix(object):
         """
         if self.h != other.h or self.w != other.w:
             raise(ValueError, "Matrices can only be added if the dimensions are the same") 
-        #   
-        # TODO - your code here
+        
         summation = [[self.g[i][j]+other.g[i][j] for j in range(self.w)] for i in range(self.h)]
         return Matrix(summation)
                 
@@ -152,8 +139,6 @@ class Matrix(object):
           -1.0  -2.0
           -3.0  -4.0
         """
-        #   
-        # TODO - your code here
         negative = [[-1*self.g[i][j] for j in range(self.w)] for i in range(self.h)]
         return Matrix(negative)
         #
@@ -162,17 +147,13 @@ class Matrix(object):
         """
         Defines the behavior of - operator (as subtraction)
         """
-        #   
-        # TODO - your code here
         return self+(-other)
-        #
+        
 
     def __mul__(self, other):
         """
         Defines the behavior of * operator (matrix multiplication)
         """
-        #   
-        # TODO - your code here
         new_other = other.T()
         answer = []
         if self.w == other.h:
@@ -184,9 +165,6 @@ class Matrix(object):
             return Matrix(answer)
         else:
             raise('Matrix has to have mxn and nxp with n common size. The requirements are not met here.')
-                    
-           
-        #
 
     def __rmul__(self, other):
         """
@@ -202,9 +180,6 @@ class Matrix(object):
         """
         if isinstance(other, numbers.Number):
             pass
-            #   
-            # TODO - your code here
             answer = [[other*self.g[i][j] for j in range(self.w)] for i in range(self.h)]
         return Matrix(answer)
-            #
             
